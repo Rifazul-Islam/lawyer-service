@@ -2,8 +2,10 @@ import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import PrivateHook from '../../PrivateHook/PrivateHook';
 const Signup = () => {
 
+      PrivateHook('signup')
     const handlarSummit = event =>{
 
         event.preventDefault( )

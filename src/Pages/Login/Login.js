@@ -3,8 +3,10 @@ import { Col, Container, Row } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
+import PrivateHook from '../../PrivateHook/PrivateHook';
 const Login = () => {
 
+       PrivateHook('login')
     const handlarSummit = event =>{
 
         event.preventDefault( )
