@@ -1,12 +1,13 @@
 import React, { useContext } from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
+import { ButtonGroup, Col, Container, Row } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
+import { FaGoogle } from 'react-icons/fa';
 import { AuthProvider } from '../../Contexts/ContextProvider/ContextProvider';
 import PrivateHook from '../../PrivateHook/PrivateHook';
 const Login = () => {
-const {UserLogin} = useContext(AuthProvider)
+const {UserLogin , handlarGoogle} = useContext(AuthProvider)
 
        PrivateHook('login')
     const handlarSummit = event =>{
@@ -30,7 +31,22 @@ const {UserLogin} = useContext(AuthProvider)
             console.error(error)
         })
 
-}
+     }
+
+
+      const googleLogin = ()=>{
+
+        handlarGoogle()
+        .then((result)=>{
+            const user = result.user
+            console.log(user)
+        })
+
+        .catch((error)=>{
+            console.error(error)
+        })
+      }
+    
     return (
         <Container>
                  
@@ -53,6 +69,11 @@ const {UserLogin} = useContext(AuthProvider)
 </Button>
 
    <Link className='mt-2 text-decoration-none' to='/signup' > <p > Create New Accout</p></Link>
+  
+           <ButtonGroup vertical>
+                <Button onClick={googleLogin }  className='mb-2' variant="outline-success"> <FaGoogle />  Google with login </Button> 
+            </ButtonGroup>
+  
   </Form>
              
             </Col>
