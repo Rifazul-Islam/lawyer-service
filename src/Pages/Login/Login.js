@@ -37,7 +37,7 @@ const Login = () => {
      Submit
 </Button>
 
-   <Link className='mt-2 text-decoration-none' to='/singup' > <p > Create New Accout</p></Link>
+   <Link className='mt-2 text-decoration-none' to='/signup' > <p > Create New Accout</p></Link>
   </Form>
              
             </Col>
