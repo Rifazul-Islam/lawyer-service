@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Navbar } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import { Link } from 'react-router-dom';
+import { AuthProvider } from '../../Contexts/ContextProvider/ContextProvider';
 const Navber = () => {
+    const { user,  ligninOut} = useContext(AuthProvider)
+
     return (
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Container>
@@ -17,13 +20,19 @@ const Navber = () => {
           
              
                 <Link className='text-decoration-none me-2 text-white' to = '/'> Home</Link>
-                <Link className='text-decoration-none me-2 text-white' to = '/login'> Login</Link>
-                
-                <Link className='text-decoration-none me-2 text-white' to = '/'> My review</Link>
-                <Link className='text-decoration-none me-2 text-white' to = '/'> My service </Link>
-                 <Link className='text-decoration-none me-2 text-white' to='/blog'> Blog</Link>
-
-             
+               {
+                  user?.email?  <>
+                  <Link className='text-decoration-none me-2 text-white' to = '/'> My review</Link>
+                  <Link className='text-decoration-none me-2 text-white' to = '/'> My service </Link>
+                   <button onClick={ligninOut} > LogOut</button>
+                  </>
+                  :
+                <>      <Link className='text-decoration-none me-2 text-white' to = '/login'> Login</Link>
+                <Link className='text-decoration-none me-2 text-white' to='/blog'> Blog</Link>
+                  </>
+              
+               }
+              
             </Nav>
           </Navbar.Collapse>
         </Container>

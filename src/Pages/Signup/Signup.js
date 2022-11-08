@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { AuthProvider } from '../../Contexts/ContextProvider/ContextProvider';
+
+
 import PrivateHook from '../../PrivateHook/PrivateHook';
 const Signup = () => {
+
+        const {handlarSignup ,  UserProfile} = useContext(AuthProvider)
 
       PrivateHook('signup')
     const handlarSummit = event =>{
@@ -16,9 +21,35 @@ const Signup = () => {
         const email = form.email.value;
         const password = form.password.value;
 
-        console.log(name, PhotoURL , email,password)
+        
 
+        handlarSignup (email, password)
+        .then((result)=>{
+            const user = result.user
+            console.log(user)
+            alert('Allah roho mote thick ache')
+            handlarProfileUpdate(name,PhotoURL)
+            form.reset()
+        })
+
+        .catch((error)=>{
+
+               console.error(error)
+        })
 }
+  
+     const handlarProfileUpdate =(name,PhotoURL) =>{
+
+             const profile = {
+                    
+                displayName : name,
+                photoURL :PhotoURL 
+             }
+
+             return UserProfile (profile)
+     }
+
+       
     return (
         <Container>
                  
@@ -38,8 +69,11 @@ const Signup = () => {
 
                        <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>Email</Form.Label>
-                             <Form.Control type="email" name="email" placeholder="Enter email" />
+                             <Form.Control type="email" name="email" placeholder="Enter photoURL" />
                        </Form.Group>
+
+                       
+                       
 
                  <Form.Group className="mb-3" controlId="formBasicPassword">
                       <Form.Label>Password</Form.Label>

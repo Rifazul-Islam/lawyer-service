@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
+import { AuthProvider } from '../../Contexts/ContextProvider/ContextProvider';
 import PrivateHook from '../../PrivateHook/PrivateHook';
 const Login = () => {
+const {UserLogin} = useContext(AuthProvider)
 
        PrivateHook('login')
     const handlarSummit = event =>{
@@ -16,6 +18,17 @@ const Login = () => {
         const password = form.password.value;
 
         console.log(email,password)
+
+        UserLogin(email, password)
+        .then((result)=>{
+              const user = result.user;
+              console.log(user)
+              form.reset()
+        })
+
+        .catch((error)=>{
+            console.error(error)
+        })
 
 }
     return (
