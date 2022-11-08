@@ -13,7 +13,7 @@ import Section2 from '../Section2/Section2';
 
 const Home = () => {
   
-   const services = useLoaderData()
+   const services = useLoaderData([])
    console.log(services)
 
     PrivateHook('home')
@@ -48,8 +48,8 @@ const Home = () => {
       
      </div>
   
-     <Link className='d-flex justify-content-around ' to='/services'>
-     <Button style={{position:'absolute', bottom:'-80%', width:'150px'  }}  variant="outline-primary">See All <BiRightArrowAlt/> </Button>
+     <Link className='d-flex justify-content-around text-decoration-none ' to='/services'>
+     <Button style={{position:'absolute', bottom:'-290px', width:'150px'  }}  variant="outline-primary">See All <BiRightArrowAlt/> </Button>
         
          </Link>
         

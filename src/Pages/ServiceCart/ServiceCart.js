@@ -1,10 +1,11 @@
 import React from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Button, Col, Container, Row } from 'react-bootstrap';
 
 import Card from 'react-bootstrap/Card';
+import { Link } from 'react-router-dom';
 const ServiceCart = ({service}) => {
 
-    const {name, img, Price,discripe} = service
+    const { _id, name, img, Price,discripe} = service
     return (
         <Container>
         <Row>
@@ -21,7 +22,7 @@ const ServiceCart = ({service}) => {
 
    </Card.Text>
     <p> Price : ${Price} </p>
- 
+       <Link  to={`/detailService/${_id}`}>  <Button variant="primary" className= 'mb-0' >detailes</Button></Link>
 </Card.Body>
  </Card>
           </Col>

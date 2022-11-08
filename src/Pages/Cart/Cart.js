@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Button, Col, Container, Row } from 'react-bootstrap';
 
 import Card from 'react-bootstrap/Card';
 const Cart = ( {service}) => {
@@ -22,6 +22,7 @@ const Cart = ( {service}) => {
    </Card.Text>
     <p> Price : ${Price} </p>
  
+   <Button variant="primary"  >detailes</Button>
 </Card.Body>
  </Card>
           </Col>
