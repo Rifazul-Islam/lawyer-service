@@ -11,10 +11,12 @@ const Signup = () => {
         event.preventDefault( )
          
         const form = event.target;
+        const name = form.name.value;
+        const PhotoURL = form.PhotoURL.value;
         const email = form.email.value;
         const password = form.password.value;
 
-        console.log(email,password)
+        console.log(name, PhotoURL , email,password)
 
 }
     return (
