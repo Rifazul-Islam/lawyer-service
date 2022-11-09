@@ -28,9 +28,13 @@ const DetailService = () => {
                 Price : ${Price}
            </p>
      
-    
-      
        </Card>
+
+                <div className='mt-5 border border-3 h-75'>
+                        <h2 className='text-center'> Add Review </h2>
+
+                </div>
+
               </Col>
           </Row>
       </Container>

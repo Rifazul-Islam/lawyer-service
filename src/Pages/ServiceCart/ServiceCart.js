@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Col, Container, Row } from 'react-bootstrap';
-
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+import 'react-photo-view/dist/react-photo-view.css';
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
 const ServiceCart = ({service}) => {
@@ -10,8 +11,13 @@ const ServiceCart = ({service}) => {
         <Container>
         <Row>
           <Col className='mt-3 '>
-          <Card style={{ width: '18rem',height:'450px' }}>
-       <Card.Img variant="top" src={img} style={{height:'200px'}} />
+        <Card style={{ width: '18rem',height:'450px' }}>
+        <PhotoProvider>
+        <PhotoView src={img}>
+        <img src={img} alt="" />
+      </PhotoView>
+    </PhotoProvider>
+      
       <Card.Body>
        <Card.Title> {name} </Card.Title>
         <Card.Text >
