@@ -11,30 +11,31 @@ const auth = getAuth(app);
 const ContextProvider = ({children}) => {
   
        const [user, setUser] = useState({})
+       const [loading, setLoading] = useState(true)
 
        const handlarSignup = (email, password) =>{
-
+                setLoading(true)
               return  createUserWithEmailAndPassword(auth,email,password)
        }
 
        const  UserProfile = (profile) =>{
-
+          setLoading(true)
               return updateProfile(auth.currentUser, profile)
        }
 
        const UserLogin = (email, password)=>{
-
+          setLoading(true)
             return signInWithEmailAndPassword(auth, email, password)
        }
 
          
          const handlarGoogle = () =>{
-
+          setLoading(true)
               return signInWithPopup(auth, googleProvider)
          }
          
        const ligninOut = ()=>{
-
+          setLoading(true)
            return signOut(auth)
        }
 
@@ -43,6 +44,7 @@ const ContextProvider = ({children}) => {
                const unSubribe = onAuthStateChanged(auth , (remaingUser)=>{
 
                      setUser(remaingUser)
+                     setLoading(false)
                })
 
                return ()=> unSubribe()
@@ -50,11 +52,13 @@ const ContextProvider = ({children}) => {
 
          const authInfo = {
             user,
+            loading,
             handlarSignup,
             UserProfile,
             UserLogin,
             handlarGoogle,
             ligninOut
+           
           }
 
     return (

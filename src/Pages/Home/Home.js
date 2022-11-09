@@ -8,7 +8,8 @@ import Carusol from '../Carusol/Carusol';
 import { BiRightArrowAlt,  } from "react-icons/bi";
 import Section1 from '../Section1/Section1';
 import Section2 from '../Section2/Section2';
-
+        
+import './Home.css'
 
 
 const Home = () => {
@@ -31,8 +32,8 @@ const Home = () => {
        <Carusol></Carusol>
 
 
-  <div style={{ display :"grid",
-       gridTemplateColumns : 'auto auto auto ', position:'relative'  , backgroundColor:'lightcyan', height:'560px' }}>
+  <div className='prarend' style={{ 
+       position:'relative', backgroundColor:'lightcyan', height:'560px' }}>
      
       {
          services.map(service => <Cart

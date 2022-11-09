@@ -17,10 +17,10 @@ const Section1 = () => {
          
           
          
-           <Card.Text>
+        
             
-               <img style={{height:'200px'}} className='w-100' src='https://www.mgc.com.tr/en/wp-content/uploads/2022/06/what-is-a-lawyer-en-mgc-legal.jpg' alt=' ' />
-          </Card.Text>
+               <img style={{height:'200px'}} className='w-50 mx-auto' src='https://www.mgc.com.tr/en/wp-content/uploads/2022/06/what-is-a-lawyer-en-mgc-legal.jpg' alt=' ' />
+
           <Card.Title className='text-center'>Divorce Lawyer</Card.Title>
           <Card.Text className='fs-5 text-primary'>
           Divorce lawyers specialize in the many legal aspects that need to be addressed when terminating a marriage. Some of these details may include child custody,

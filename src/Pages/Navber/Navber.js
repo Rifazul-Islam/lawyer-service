@@ -23,16 +23,20 @@ const Navber = () => {
                {
                   user?.email?  <>
                   <Link className='text-decoration-none me-2 text-white' to = '/'> My review</Link>
-                  <Link className='text-decoration-none me-2 text-white' to = '/'> My service </Link>
+          
                    <button onClick={ligninOut} > LogOut</button>
                   </>
                   :
-                <>      <Link className='text-decoration-none me-2 text-white' to = '/login'> Login</Link>
-                <Link className='text-decoration-none me-2 text-white' to='/blog'> Blog</Link>
+                <>      
+                <Link className='text-decoration-none me-2 text-white' to = '/login'> Login</Link>
+                      
                   </>
               
                }
+
+         <Link className='text-decoration-none me-2 text-white' to = '/addservice'> AddService </Link>
               
+              <Link className='text-decoration-none me-2 text-white' to='/blog'> Blog</Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

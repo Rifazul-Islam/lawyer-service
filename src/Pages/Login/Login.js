@@ -2,12 +2,17 @@ import React, { useContext } from 'react';
 import { ButtonGroup, Col, Container, Row } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaGoogle } from 'react-icons/fa';
 import { AuthProvider } from '../../Contexts/ContextProvider/ContextProvider';
 import PrivateHook from '../../PrivateHook/PrivateHook';
 const Login = () => {
 const {UserLogin , handlarGoogle} = useContext(AuthProvider)
+const navigate = useNavigate();
+const location = useLocation();
+
+
+const  from = location.state?.from?.pathname || '/';
 
        PrivateHook('login')
     const handlarSummit = event =>{
@@ -24,6 +29,7 @@ const {UserLogin , handlarGoogle} = useContext(AuthProvider)
         .then((result)=>{
               const user = result.user;
               console.log(user)
+              navigate( from , { replace : true });
               form.reset()
         })
 

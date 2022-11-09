@@ -21,7 +21,7 @@ const Services = () => {
                 <Col>
                 
                 <div style={{ display :"grid",
-               gridTemplateColumns : 'auto auto auto ',  backgroundColor:'lightcyan', height:'1000px' }} >
+               gridTemplateColumns : 'auto auto auto ',  backgroundColor:'lightcyan', height:'1500px' }} >
            
            {
               secvices.map(service => <ServiceCart 

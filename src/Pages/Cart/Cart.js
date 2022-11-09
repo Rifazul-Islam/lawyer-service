@@ -10,7 +10,7 @@ const Cart = ( {service}) => {
         <Row>
           <Col className='mt-3 '>
           <Card style={{ width: '18rem',height:'450px' }}>
-   <Card.Img variant="top" src={img} style={{height:'200px'}} />
+   <Card.Img variant="top" src={img} style={{height:'200px', }} />
   <Card.Body>
    <Card.Title> {name} </Card.Title>
     <Card.Text >
