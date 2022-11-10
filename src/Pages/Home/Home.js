@@ -15,7 +15,7 @@ import './Home.css'
 const Home = () => {
   
    const services = useLoaderData([])
-   console.log(services)
+//    console.log(services)
 
     PrivateHook('home')
 
@@ -36,11 +36,11 @@ const Home = () => {
        position:'relative', backgroundColor:'lightcyan', height:'560px' }}>
      
       {
-         services.map(service => <Cart
+         services.map(servise => <Cart
          
-             key={service._id}
+             key={servise._id}
 
-             service={service}
+             servise={servise}
          > </Cart>)
       }
       

@@ -5,7 +5,7 @@ import ServiceCart from '../ServiceCart/ServiceCart';
 const Services = () => {
 
     const [secvices, setServices] = useState([])
-    console.log(secvices)
+    // console.log(secvices)
 
       useEffect(()=>{
         
@@ -25,7 +25,7 @@ const Services = () => {
            
            {
               secvices.map(service => <ServiceCart 
-              key={service}
+              key={service._id}
               service= {service}
                 > </ServiceCart>)
            }

@@ -2,9 +2,9 @@ import React from 'react';
 import { Button, Col, Container, Row } from 'react-bootstrap';
 
 import Card from 'react-bootstrap/Card';
-const Cart = ( {service}) => {
+const Cart = ( {servise}) => {
 
-      const {name, img, Price,discripe} = service
+      const {name, img, Price,discripe} =servise
     return (
         <Container>
         <Row>
@@ -22,7 +22,7 @@ const Cart = ( {service}) => {
    </Card.Text>
     <p> Price : ${Price} </p>
  
-   <Button variant="primary"  >detailes</Button>
+   <Button variant="primary">detailes</Button>
 </Card.Body>
  </Card>
           </Col>

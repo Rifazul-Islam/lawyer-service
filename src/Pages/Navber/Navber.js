@@ -22,8 +22,8 @@ const Navber = () => {
                 <Link className='text-decoration-none me-2 text-white' to = '/'> Home</Link>
                {
                   user?.email?  <>
-                  <Link className='text-decoration-none me-2 text-white' to = '/'> My review</Link>
-          
+                  <Link className='text-decoration-none me-2 text-white' to = '/addreview'> My review</Link>
+                  <Link className='text-decoration-none me-2 text-white' to = '/addservice'> AddService </Link>
                    <button onClick={ligninOut} > LogOut</button>
                   </>
                   :
@@ -34,7 +34,7 @@ const Navber = () => {
               
                }
 
-         <Link className='text-decoration-none me-2 text-white' to = '/addservice'> AddService </Link>
+        
               
               <Link className='text-decoration-none me-2 text-white' to='/blog'> Blog</Link>
             </Nav>

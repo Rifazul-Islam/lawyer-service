@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Col, Container, Row } from 'react-bootstrap';
+import toast from 'react-hot-toast';
 
 
 
@@ -31,7 +32,8 @@ const AddService = () => {
 
               if(data.acknowledged){
 
-                   alert('your comipled send data')
+                   alert()
+                   toast.success('your comipled send data', data)
               }
           })
 

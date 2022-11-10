@@ -1,18 +1,71 @@
 import React, { useContext } from 'react';
-import { useLoaderData } from 'react-router-dom';
-import {  Col, Container, Row } from 'react-bootstrap';
+import {  useLoaderData } from 'react-router-dom';
+import {  ImUser } from "react-icons/im";
+import {  Button, Col, Container, Image, Row } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 import { AuthProvider } from '../../Contexts/ContextProvider/ContextProvider';
+import toast from 'react-hot-toast';
 
-import Form from 'react-bootstrap/Form';
-import InputGroup from 'react-bootstrap/InputGroup'
+
 const DetailService = () => {
     const catagories = useLoaderData()
-    // console.log(catagories)
+
+    
       
       const {user} = useContext(AuthProvider)
       
     const { _id, name, img, Price,discripe} =catagories
+
+
+       const handlarSumited = event =>{
+
+        event.preventDefault();
+          
+              const form = event.target
+              const message = form.message.value;
+              const email = user?.email || 'usrester';
+                  
+          const  reviews = {
+                   
+                   service : _id ,
+                  message,
+                  email
+               
+             }
+
+              
+
+             fetch('http://localhost:5000/reviews',{
+
+              method:'POST',
+
+              headers :{
+                  'content-type':'application/json'
+              },
+
+              body:JSON.stringify(reviews )
+          })
+
+          .then(res => res.json())
+
+          .then(data => {
+          
+            if(data.acknowledged){
+                
+                toast.success( ' your review send data database',  data)
+                  form.reset()
+            }
+          })
+       }
+
+      
+
+          
+
+   
+
+
+
     return (
       <Container>
           <Row className='mt-5 '>
@@ -37,47 +90,69 @@ const DetailService = () => {
      
        </Card>
 
-                <div className='mt-5 mb-5 border border-3 '>
-                        <h2 className='text-center'> Add Review </h2>
+                <div className='mt-5 mb-5 border border-3'>
+                        <h4 className='text-center mt-2'> Add Review </h4>
                        
-                         <div>
-                              <p className='ms-5'>
-                              {
-                            user?.displayName
-                          }
-                          <img className='roundedCircle' style={{width:'40px'}} src={user?.photoURL} alt= '' />
-                              
-                              </p>
-                             
+                          
+                            <form onSubmit={handlarSumited} >
+                             <div className=' d-flex justify-content-center'>
+                             <input style={{height:'70px'}} className=' w-75  my-5 py-2 mb-2 ps-2' type ="text" name='message' placeholder="Bio"/>
+                             </div>
+                            <p style={{marginLeft: '150px',  marginTop:'5px'}} > 
 
-                                <div>
-                        <span className='d-flex justify-content-between '>
+                              {
+                                  user?.email?   <Button as="input" type="submit" value="Submit" />
+                                  : <>  
+                                      <Button variant="primary">Submit</Button>
+                                    
+                                      
+                                  
+                                   </>
+                                
+                              }
+                          
+                           
+                           </p>
+                            </form>
+                            
+
+
+
+                               <div  className='d-flex bg-primary justify-content-between p-2 align-items-center  my-5 w-50 mx-auto'>
+                                <span className='text-white'>
+
+                                {
+                             user?.displayName
+                              }
+                                </span>
+                              
+                             <span>
+                                {
+                                  user?.email?
+                                      <>
+                                      <Image
+                                   
+                                   roundedCircle
+                                   style={{width:'50px'}}
+                                 src={user?.photoURL} 
                                  
-                        <Form.Group className="mb-3" controlId="formBasicEmail">
-                        <Form.Label>Email </Form.Label>
-                         <Form.Control type="email" name="email" placeholder="Enter email" />
-                       </Form.Group>
-                               
-                        <Form.Group className="mb-3" controlId="formBasicEmail">
-                        <Form.Label>Email </Form.Label>
-                         <Form.Control type="email" name="email" placeholder="Enter email" />
-                       </Form.Group>
-                                  </span>
-           
-                    
-                    
-                                 
-                               
-                                        <p style={{ marginLeft:'300px', marginTop:'10px'}} >
-                                        <textarea style={{width:'600px' , height:'100px' }} > 
-     
-                                        </textarea>
-                                        </p>
+                                 >
+
+                                 </Image>
+                                      </>
+
+                                  :   <ImUser className='  fs-3 text'></ImUser>
+                                     
+                                }   
+                             </span>
+                               </div>
+                             
+                                
                                 </div>
                                
-                         </div>
+                    
 
-                </div>
+              
 
               </Col>
           </Row>
