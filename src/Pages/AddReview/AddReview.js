@@ -4,20 +4,22 @@ import { Col, Container, Row } from 'react-bootstrap';
 import Table from 'react-bootstrap/Table';
 import toast from 'react-hot-toast';
 import { AuthProvider } from '../../Contexts/ContextProvider/ContextProvider';
+import PrivateHook from '../../PrivateHook/PrivateHook';
 import ReviewTable from '../ReviewTable/ReviewTable';
 
 const AddReview = () => {
     const {user} = useContext(AuthProvider)
-    const [reviews, setReviews] = useState([])
-    // console.log(reviews)
+    const [reviews, setReviews] = useState()
+   
+    PrivateHook('addReview')
+    console.log(reviews)
     useEffect( ()=>{
        
-        fetch(`http://localhost:5000/reviews?email=${user?.email}`)
+        fetch(`https://lawyer-server-site.vercel.app/reviews?email=${user?.email}`)
 
-          .then(res => res.json())
-          .then(data => setReviews(data))
-   },[user?.email])
-
+        .then(res => res.json()) 
+        .then(data =>setReviews(data) )
+}, [user?.email])
 
    const deletedReview = id =>{
 
@@ -26,13 +28,16 @@ const AddReview = () => {
            
      if(sure){
 
-           fetch(`http://localhost:5000/reviews/${id}`, {
+           fetch(`https://lawyer-server-site.vercel.app/reviews/${id}`, {
 
             method:'DELETE',
+
+           
             
            })
 
-           .then(res => res.json())
+           .then(res =>res.json() )
+               
            .then(data => {
              console.log(data)
 
@@ -49,37 +54,50 @@ const AddReview = () => {
      }
       
  }
+
+  
     
       return (
           <Container>
             <Row>
-                <Col className='mt-5'>
+                <Col className='mt-5' style={{height:'500px'}}>
                 
-                <Table striped bordered hover size="sm">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Service img</th>
-            <th>Service Name</th>
-            <th>Review </th>
-            <th>Email Name</th>
-          </tr>
-        </thead>
-        <tbody>
-          
-                   {
-                          reviews.map(review => <ReviewTable
-                                 
-                              key={review._id}
+                     <Table striped bordered hover size="sm">
+                        <thead>
+                          <tr>
+                            <th>#</th>
+                            <th>Service img</th>
+                            <th>user img</th>
+                            <th>Service Name</th>
+                            <th>Review </th>
+                            <th> UserName </th>
+                            <th>Email Name</th>
+                          </tr>
+                        </thead>
+                       
+                        <tbody>
+                        
+                           
+                          
+                                   { 
+                                       
+                                          reviews?.map(review => <ReviewTable
+                                                 
+                                              key={review._id}
+                
+                                              review = {review}
+                
+                                              deletedReview ={deletedReview }
+                                              
+                                          > </ReviewTable> )
+                                   }
+                        </tbody>
+                      </Table>
 
-                              review = {review}
+                    
 
-                              deletedReview ={deletedReview }
-                              
-                          > </ReviewTable> )
-                   }
-        </tbody>
-      </Table>
+                        
+                     
                 </Col>
             </Row>
           </Container>

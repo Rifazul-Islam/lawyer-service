@@ -4,9 +4,12 @@ import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
+import PrivateHook from '../../PrivateHook/PrivateHook';
 const ServiceCart = ({service}) => {
 
     const { _id, name, img, Price,discripe} = service
+
+    PrivateHook('serviceCart')
     return (
         <Container>
         <Row>

@@ -1,15 +1,17 @@
 import React, { useContext } from 'react';
-import { ButtonGroup, Col, Container, Row } from 'react-bootstrap';
+import { ButtonGroup, Col, Container, Row, Spinner } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaGoogle } from 'react-icons/fa';
 import { AuthProvider } from '../../Contexts/ContextProvider/ContextProvider';
 import PrivateHook from '../../PrivateHook/PrivateHook';
+import toast from 'react-hot-toast';
 const Login = () => {
-const {UserLogin , handlarGoogle} = useContext(AuthProvider)
+const {UserLogin , handlarGoogle, loading} = useContext(AuthProvider)
 const navigate = useNavigate();
 const location = useLocation();
+
 
 
 const  from = location.state?.from?.pathname || '/';
@@ -29,8 +31,35 @@ const  from = location.state?.from?.pathname || '/';
         .then((result)=>{
               const user = result.user;
               console.log(user)
-              navigate( from , { replace : true });
-              form.reset()
+             
+             
+              const presentUser = {
+
+                  email: user.email
+              }
+
+            fetch('https://genius-car-server-olive.vercel.app/jwt',{
+
+               method:'POST',
+               headers:{
+
+                 'content-type': 'application/json'
+
+               },
+
+               body:JSON.stringify(presentUser)
+            })
+
+              .then(res => res.json())
+              .then(data => {
+
+                       toast.success('localStorage set token')
+                  
+
+                   localStorage.setItem('token-nest', data.token)
+
+                   navigate( from , { replace : true });
+              })
         })
 
         .catch((error)=>{
@@ -46,12 +75,45 @@ const  from = location.state?.from?.pathname || '/';
         .then((result)=>{
             const user = result.user
             console.log(user)
+
+            const presentUser = {
+
+              email: user.email
+          }
+
+        fetch('https://genius-car-server-olive.vercel.app/jwt',{
+
+           method:'POST',
+           headers:{
+
+             'content-type': 'application/json'
+
+           },
+
+           body:JSON.stringify(presentUser)
+        })
+
+          .then(res => res.json())
+          .then(data => {
+
+                   toast.success('localStorage set token')
+              
+
+               localStorage.setItem('token-nest', data.token)
+
+              
+          })
         })
 
         .catch((error)=>{
             console.error(error)
         })
       }
+
+      if(loading){
+
+        return <div className='d-flex justify-content-center mt-5 ' > <Spinner  animation="border" variant="success" /></div>
+    }
     
     return (
         <Container>

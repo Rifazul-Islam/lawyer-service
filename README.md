@@ -1,3 +1,23 @@
+# Website Name Lawyer 
+ ## Webwite live and netlify link : (https://lawyer-a593b.web.app/) 
+ 
+ #  Website description : 
+  * first create react app instal and react router 
+  * firebase new create new projects and database  mongodb use 
+  * framwork use react-boostrap
+  * desgin hot Toast and react icon
+  * server site use env file and jwt token  vercel 
+  *  Features : Actually this site is  Lawyer related system is used.
+
+
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -1,19 +1,32 @@
-import React, { useEffect, useState } from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
+import React, {  useEffect, useState } from 'react';
+import { Col, Container, Row, Spinner } from 'react-bootstrap';
+
+import PrivateHook from '../../PrivateHook/PrivateHook';
 import ServiceCart from '../ServiceCart/ServiceCart';
 
 const Services = () => {
 
     const [secvices, setServices] = useState([])
-    // console.log(secvices)
+     
+       const [loading, setLoading] = useState(true)
 
+    // console.log(secvices)
+    PrivateHook('services')
       useEffect(()=>{
         
-        fetch('http://localhost:5000/services')
+        fetch('https://lawyer-server-site.vercel.app/services')
         .then(res => res.json())
-        .then(data => setServices(data))
-            
+        .then(data => {
+          setServices(data)
+          setLoading(false)
+        })
+          
       }, [])
+
+      if(loading){
+
+        return <div className='d-flex justify-content-center mt-5 ' > <Spinner  animation="border" variant="success" /></div>
+    }
 
     return (
         <Container>
@@ -29,6 +42,8 @@ const Services = () => {
               service= {service}
                 > </ServiceCart>)
            }
+
+          
         </div>
                 </Col>
             </Row>

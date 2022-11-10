@@ -11,16 +11,14 @@ const Section1 = () => {
        
         <Container>
             <Row className='mt-5 '>
-                <Col>
+                <Col >
                 
-                <Card className="text-wrap">
+                <Card className="text-wrap ">
          
-          
-         
-        
-            
-               <img style={{height:'200px'}} className='w-50 mx-auto' src='https://www.mgc.com.tr/en/wp-content/uploads/2022/06/what-is-a-lawyer-en-mgc-legal.jpg' alt=' ' />
 
+            
+        <img style={{height:'200px'}} className='w-50 mx-auto mt-3' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThl78g333Btkrw1_DHzr62S6hIPr8c533Hvg&usqp=CAU' alt=' ' />
+        <Card.Body>
           <Card.Title className='text-center'>Divorce Lawyer</Card.Title>
           <Card.Text className='fs-5 text-primary'>
           Divorce lawyers specialize in the many legal aspects that need to be addressed when terminating a marriage. Some of these details may include child custody,
@@ -28,10 +26,12 @@ const Section1 = () => {
            formalize a separation while remaining legally married. When there are children involved, a divorce lawyer will help set the terms for child support and child custody...
         </Card.Text>
 
-        <Button variant="primary">Read more ...</Button>
-      
+  
+        <Button variant="primary"> Read more ..</Button>
+      </Card.Body>
         
          </Card>
+         
                 </Col>
             </Row>
         </Container>

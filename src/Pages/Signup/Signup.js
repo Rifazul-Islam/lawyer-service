@@ -1,14 +1,15 @@
 import React, { useContext } from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Col, Container, Row, Spinner } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import toast from 'react-hot-toast';
 import { AuthProvider } from '../../Contexts/ContextProvider/ContextProvider';
 
 
 import PrivateHook from '../../PrivateHook/PrivateHook';
 const Signup = () => {
-
-        const {handlarSignup ,  UserProfile} = useContext(AuthProvider)
+     
+        const {handlarSignup ,  UserProfile,loading} = useContext(AuthProvider)
 
       PrivateHook('signup')
     const handlarSummit = event =>{
@@ -26,10 +27,39 @@ const Signup = () => {
         handlarSignup (email, password)
         .then((result)=>{
             const user = result.user
+             
             console.log(user)
-            alert('Allah roho mote thick ache')
+             toast.success('successfully your Signup')
             handlarProfileUpdate(name,PhotoURL)
             form.reset()
+
+            const presentUser = {
+
+              email: user.email
+          }
+
+        fetch('https://genius-car-server-olive.vercel.app/jwt',{
+
+           method:'POST',
+           headers:{
+
+             'content-type': 'application/json'
+
+           },
+
+           body:JSON.stringify(presentUser)
+        })
+
+          .then(res => res.json())
+          .then(data => {
+
+                   
+            toast.success(' create Token from signup page')
+
+               localStorage.setItem('token-best', data.token)
+
+              
+          })
         })
 
         .catch((error)=>{
@@ -49,7 +79,11 @@ const Signup = () => {
              return UserProfile (profile)
      }
 
-       
+     if(loading){
+
+      return <div className='d-flex justify-content-center mt-5 ' > <Spinner  animation="border" variant="success" /></div>
+  }
+
     return (
         <Container>
                  
@@ -90,7 +124,7 @@ const Signup = () => {
                         </Col>
 
                       <Col >
-                      <img className='ms-5' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrNXfJg15YqUbIUNXplMck1lMbyG-Znsghow&usqp=CAU' alt=''/>
+                      <img className='ms-5 ' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT23zrHWfjfwONQ1ugkyg9UIkd0znvNfCrppK8yNxDmVWy9AOwQZXrkMF5cz7g2dWkP_AA&usqp=CAU' alt=''/>
                       </Col>
                     </Row> 
                             

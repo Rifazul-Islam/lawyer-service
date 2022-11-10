@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Navbar } from 'react-bootstrap';
+import { Button, Navbar } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import { Link } from 'react-router-dom';
@@ -8,9 +8,9 @@ const Navber = () => {
     const { user,  ligninOut} = useContext(AuthProvider)
 
     return (
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+        <Navbar collapseOnSelect expand="lg" bg="primary" variant="dark">
         <Container>
-          <Navbar.Brand href="#home"> Lawyer Power </Navbar.Brand>
+          <Navbar.Brand href="#home"> Lawyer  </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
@@ -24,7 +24,8 @@ const Navber = () => {
                   user?.email?  <>
                   <Link className='text-decoration-none me-2 text-white' to = '/addreview'> My review</Link>
                   <Link className='text-decoration-none me-2 text-white' to = '/addservice'> AddService </Link>
-                   <button onClick={ligninOut} > LogOut</button>
+                   
+                   <Button onClick={ligninOut} variant="info">LogOut</Button>
                   </>
                   :
                 <>      

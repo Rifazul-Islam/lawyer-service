@@ -2,9 +2,12 @@ import React from 'react';
 import { Button, Col, Container, Row } from 'react-bootstrap';
 
 import Card from 'react-bootstrap/Card';
+import PrivateHook from '../../PrivateHook/PrivateHook';
 const Cart = ( {servise}) => {
 
       const {name, img, Price,discripe} =servise
+
+      PrivateHook('service-cart')
     return (
         <Container>
         <Row>

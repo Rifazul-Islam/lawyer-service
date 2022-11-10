@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import toast from 'react-hot-toast';
+import PrivateHook from '../../PrivateHook/PrivateHook';
 
 
 
 const AddService = () => {
 
     const [service, setService] = useState({})
-
+    PrivateHook('addSevice')
     const handlarSummit = event =>{
 
           event.preventDefault();
@@ -15,7 +16,7 @@ const AddService = () => {
           console.log(service)
           event.target.reset()
 
-          fetch('http://localhost:5000/services',{
+          fetch('https://lawyer-server-site.vercel.app/services',{
            
             method:'POST',
             headers:{
@@ -32,7 +33,7 @@ const AddService = () => {
 
               if(data.acknowledged){
 
-                   alert()
+               
                    toast.success('your comipled send data', data)
               }
           })

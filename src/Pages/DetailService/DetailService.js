@@ -5,12 +5,13 @@ import {  Button, Col, Container, Image, Row } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 import { AuthProvider } from '../../Contexts/ContextProvider/ContextProvider';
 import toast from 'react-hot-toast';
+import PrivateHook from '../../PrivateHook/PrivateHook';
 
 
 const DetailService = () => {
-    const catagories = useLoaderData()
+    const catagories = useLoaderData([])
 
-    
+    PrivateHook('detail service')
       
       const {user} = useContext(AuthProvider)
       
@@ -24,18 +25,21 @@ const DetailService = () => {
               const form = event.target
               const message = form.message.value;
               const email = user?.email || 'usrester';
-                  
+              const name = user?.displayName || 'unUser'; 
+              const photoURL = user?.photoURL || 'unUser';
           const  reviews = {
                    
                    service : _id ,
                   message,
-                  email
+                  email,
+                  name ,
+                  photoURL
                
              }
 
               
 
-             fetch('http://localhost:5000/reviews',{
+             fetch('https://lawyer-server-site.vercel.app/reviews',{
 
               method:'POST',
 
@@ -57,14 +61,6 @@ const DetailService = () => {
             }
           })
        }
-
-      
-
-          
-
-   
-
-
 
     return (
       <Container>
@@ -100,15 +96,19 @@ const DetailService = () => {
                              </div>
                             <p style={{marginLeft: '150px',  marginTop:'5px'}} > 
 
+
+                            
+                        
                               {
-                                  user?.email?   <Button as="input" type="submit" value="Submit" />
-                                  : <>  
-                                      <Button variant="primary">Submit</Button>
-                                    
+                                  user?.email?  <Button as="input" type="submit" value="Submit" />
+
+                                  :  <>
+
+                                   <Button variant="primary" >Submit</Button>
                                       
-                                  
-                                   </>
-                                
+                                     </>
+
+                                     
                               }
                           
                            
