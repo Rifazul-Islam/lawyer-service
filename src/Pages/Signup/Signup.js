@@ -3,6 +3,7 @@ import { Col, Container, Row, Spinner } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import toast from 'react-hot-toast';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthProvider } from '../../Contexts/ContextProvider/ContextProvider';
 
 
@@ -10,6 +11,14 @@ import PrivateHook from '../../PrivateHook/PrivateHook';
 const Signup = () => {
      
         const {handlarSignup ,  UserProfile,loading} = useContext(AuthProvider)
+
+        const navigate = useNavigate();
+       const location = useLocation();
+
+
+
+const  from = location.state?.from?.pathname || '/';
+
 
       PrivateHook('signup')
     const handlarSummit = event =>{
@@ -58,7 +67,7 @@ const Signup = () => {
 
                localStorage.setItem('token-best', data.token)
 
-              
+               navigate( from , { replace : true });
           })
         })
 

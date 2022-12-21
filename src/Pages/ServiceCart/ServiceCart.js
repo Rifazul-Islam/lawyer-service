@@ -14,16 +14,16 @@ const ServiceCart = ({service}) => {
         <Container>
         <Row>
           <Col className='mt-3 '>
-        <Card style={{ width: '18rem',height:'450px' }}>
+        <Card  style={{ width:'18rem', height:'450px' }}>
         <PhotoProvider>
-        <PhotoView src={img}>
+        <PhotoView  src={img}>
         <img src={img} alt="" />
       </PhotoView>
     </PhotoProvider>
       
       <Card.Body>
        <Card.Title> {name} </Card.Title>
-        <Card.Text >
+        <Card.Text  style={{textAlign:'justify'}} >
     
         {discripe?.length >100? discripe.slice(0,100) + '...'
 

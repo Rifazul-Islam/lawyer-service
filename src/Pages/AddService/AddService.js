@@ -61,12 +61,12 @@ const AddService = () => {
         <Container>
             <Row>
 
-                <Col>
+                <Col className='d-flex justify-content-center  '>
                    
-                <div className=' mt-5 ms-5 w-50 border border-4  bg-white ' style={{height:'400px'}} >
+                <div className='  mt-5 sm:w-50 w-50 border border-4  bg-white ' style={{height:'400px'}} >
 
                                                  <h5 className='text-center'> Add Service ...</h5>
-           <form  onSubmit={handlarSummit}>
+           <form className=''  onSubmit={handlarSummit}>
            
             <input className='w-75 ms-4 mt-3 py-2 mb-2 ps-2' onBlur={handlarBlur} type ="text" name='name' placeholder='Service name'/>
            

@@ -33,7 +33,7 @@ const Home = () => {
 
 
   <div className='prarend' style={{ 
-       position:'relative', backgroundColor:'lightcyan', height:'560px' }}>
+       backgroundColor:'lightcyan', MaxHeight:'560px' }}>
      
       {
          services.map(servise => <Cart
@@ -49,11 +49,15 @@ const Home = () => {
       
      </div>
   
-     <Link className='d-flex justify-content-around text-decoration-none ' to='/services'>
+     {/* <Link className='d-flex justify-content-around text-decoration-none pb-5' to='/services'>
      <Button style={{position:'absolute', bottom:'-290px', width:'150px'  }}  variant="outline-primary">See All <BiRightArrowAlt/> </Button>
         
-         </Link>
+         </Link>  */}
         
+        <Link className='d-flex justify-content-around pt-2 text-decoration-none pb-5' to='/services'>
+     <Button   variant="outline-primary">See All <BiRightArrowAlt/> </Button>
+        
+         </Link> 
         
 
 

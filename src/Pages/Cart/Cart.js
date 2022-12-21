@@ -12,7 +12,7 @@ const Cart = ( {servise}) => {
         <Container>
         <Row>
           <Col className='mt-3 '>
-          <Card style={{ width: '18rem',height:'450px' }}>
+          <Card className='sm:w-full' style={{ height:'450px' }}>
    <Card.Img variant="top" src={img} style={{height:'200px', }} />
   <Card.Body>
    <Card.Title> {name} </Card.Title>

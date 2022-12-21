@@ -3,7 +3,8 @@ import { Col, Container, Row, Spinner } from 'react-bootstrap';
 
 import PrivateHook from '../../PrivateHook/PrivateHook';
 import ServiceCart from '../ServiceCart/ServiceCart';
-
+ 
+ import './Services.css'
 const Services = () => {
 
     const [secvices, setServices] = useState([])
@@ -33,8 +34,7 @@ const Services = () => {
             <Row>
                 <Col>
                 
-                <div style={{ display :"grid",
-               gridTemplateColumns : 'auto auto auto ',  backgroundColor:'lightcyan', height:'1500px' }} >
+                <div className='service' style={{ backgroundColor:'lightcyan', MaxHeight:'1500px' }} >
            
            {
               secvices.map(service => <ServiceCart 

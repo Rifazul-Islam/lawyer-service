@@ -24,15 +24,16 @@ const Navber = () => {
                   user?.email?  <>
                   <Link className='text-decoration-none me-2 text-white' to = '/addreview'> My review</Link>
                   <Link className='text-decoration-none me-2 text-white' to = '/addservice'> AddService </Link>
+                  <Link className='text-decoration-none me-2 text-white' onClick={ligninOut} > Logout </Link>
                    
-                   <Button onClick={ligninOut} variant="info">LogOut</Button>
+                        
                   </>
                   :
                 <>      
                 <Link className='text-decoration-none me-2 text-white' to = '/login'> Login</Link>
                       
                   </>
-              
+             
                }
 
         

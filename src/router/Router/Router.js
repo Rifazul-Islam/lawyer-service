@@ -20,6 +20,7 @@ export const router = createBrowserRouter([
          loader:()=>fetch('https://lawyer-server-site.vercel.app/service')
       },
       
+ 
 
     { path:'/login', element: <Login></Login>  },
 
